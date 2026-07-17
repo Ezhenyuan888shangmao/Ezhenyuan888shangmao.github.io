@@ -112,6 +112,44 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784281793204,
+        "name": "八面通",
+        "category": "gift",
+        "price": 60,
+        "originalPrice": 65,
+        "unit": "提",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784281786783_8caf22e0fb06a8d2e05a68605a2347c0.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784281907533,
+        "name": "金星0糖干啤",
+        "category": "alcohol",
+        "price": 70,
+        "originalPrice": 80,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784281880700_cd8a4ba61e3e63db82289f41b61fbaf3.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
