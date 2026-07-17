@@ -19,44 +19,6 @@ var products = [
         ]
     },
     {
-        "id": 1784279789283,
-        "name": "12度小麦原浆",
-        "category": "alcohol",
-        "price": 50,
-        "originalPrice": 60,
-        "unit": "箱",
-        "minOrder": 10,
-        "sales": 0,
-        "stock": 100,
-        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279783930_f317522242e18cce8bc1d23655baad31.jpg",
-        "description": "",
-        "specifications": [
-            {
-                "name": "规格",
-                "value": "-"
-            }
-        ]
-    },
-    {
-        "id": 1784281793204,
-        "name": "八面通",
-        "category": "gift",
-        "price": 60,
-        "originalPrice": 65,
-        "unit": "提",
-        "minOrder": 10,
-        "sales": 0,
-        "stock": 100,
-        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784281786783_8caf22e0fb06a8d2e05a68605a2347c0.jpg",
-        "description": "",
-        "specifications": [
-            {
-                "name": "规格",
-                "value": "-"
-            }
-        ]
-    },
-    {
         "id": 1784281907533,
         "name": "金星0糖干啤",
         "category": "alcohol",
@@ -95,16 +57,16 @@ var products = [
         ]
     },
     {
-        "id": 1784282593664,
-        "name": "盲盒",
+        "id": 1784282617537,
+        "name": "盛宴1*12",
         "category": "gift",
-        "price": 55,
-        "originalPrice": 55,
+        "price": 85,
+        "originalPrice": 90,
         "unit": "提",
         "minOrder": 10,
         "sales": 0,
         "stock": 100,
-        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279705709_f42cffeeb39d2eae0a3533b91ac64180.jpg",
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279627611_909f479a2694b079e5457f6a175a0296.jpg",
         "description": "",
         "specifications": [
             {
@@ -114,11 +76,11 @@ var products = [
         ]
     },
     {
-        "id": 1784282607545,
+        "id": 1784283469719,
         "name": "欧美风1*6",
         "category": "gift",
-        "price": 60,
-        "originalPrice": 65,
+        "price": 65,
+        "originalPrice": 70,
         "unit": "提",
         "minOrder": 10,
         "sales": 0,
@@ -133,16 +95,54 @@ var products = [
         ]
     },
     {
-        "id": 1784282617537,
-        "name": "盛宴1*12",
+        "id": 1784283516910,
+        "name": "八面通",
         "category": "gift",
-        "price": 85,
-        "originalPrice": 90,
+        "price": 65,
+        "originalPrice": 70,
         "unit": "提",
         "minOrder": 10,
         "sales": 0,
         "stock": 100,
-        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279627611_909f479a2694b079e5457f6a175a0296.jpg",
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784281786783_8caf22e0fb06a8d2e05a68605a2347c0.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784283577367,
+        "name": "12度小麦原浆",
+        "category": "alcohol",
+        "price": 60,
+        "originalPrice": 70,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279783930_f317522242e18cce8bc1d23655baad31.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784283600583,
+        "name": "盲盒",
+        "category": "gift",
+        "price": 55,
+        "originalPrice": 60,
+        "unit": "提",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279705709_f42cffeeb39d2eae0a3533b91ac64180.jpg",
         "description": "",
         "specifications": [
             {
