@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>商品管理 - 河南益臻源</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .btn-primary {
+            background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 h-14 flex items-center justify-between">
+            <div class="flex items-center">
+                <i class="fa-solid fa-cog text-blue-500 text-xl mr-2"></i>
+                <h1 class="text-lg font-bold text-gray-900">商品管理</h1>
+            </div>
+            <div class="flex items-center gap-2">
+                <button id="logout-btn" class="bg-gray-100 px-3 py-1.5 rounded-lg text-gray-700 font-semibold text-sm flex items-center gap-1 hover:bg-gray-200">
+                    <i class="fa-solid fa-right-from-bracket text-xs"></i>
+                    重新登录
+                </button>
+                <button id="save-btn" class="btn-primary px-4 py-1.5 rounded-lg text-white font-semibold text-sm flex items-center gap-1">
+                    <i class="fa-solid fa-save text-xs"></i>
+                    保存更新
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-4">
+        <div class="bg-white rounded-xl shadow-sm p-4 mb-4">
+            <h2 class="text-base font-semibold text-gray-900 mb-3 flex items-center">
+                <i class="fa-solid fa-plus-circle text-blue-500 mr-2"></i>添加商品
+            </h2>
+            <form id="product-form" class="space-y-3" onsubmit="return false;">
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">商品名称 <span class="text-red-500">*</span></label>
+                    <input type="text" id="name" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="如：农夫山泉矿泉水">
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">分类 <span class="text-red-500">*</span></label>
+                        <select id="category" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                            <option value="gift">礼品类</option>
+                            <option value="alcohol">酒类</option>
+                            <option value="festival">节日专供</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">单位 <span class="text-red-500">*</span></label>
+                        <input type="text" id="unit" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="箱">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">批发价 <span class="text-red-500">*</span></label>
+                        <input type="number" id="price" step="0.01" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="12.00">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">原价</label>
+                        <input type="number" id="originalPrice" step="0.01" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="15.00">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">起订量 <span class="text-red-500">*</span></label>
+                        <input type="number" id="minOrder" required class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="10">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-gray-700 mb-1">库存</label>
+                        <input type="number" id="stock" value="100" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">商品图片</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="image" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="图片URL或点击上传">
+                        <button type="button" id="upload-btn" class="bg-gray-100 px-3 py-2 rounded-lg text-gray-700 text-sm hover:bg-gray-200 flex items-center gap-1">
+                            <i class="fa-solid fa-upload"></i>上传
+                        </button>
+                    </div>
+                    <input type="file" id="image-file" accept="image/*" class="hidden">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">商品描述</label>
+                    <textarea id="description" rows="2" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="商品详细描述"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-gray-700 mb-1">规格参数（每行一条，格式：名称: 值）</label>
+                    <textarea id="specifications" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none" placeholder="规格: 550ml*24瓶/箱&#10;保质期: 24个月"></textarea>
+                </div>
+
+                <button type="button" id="add-btn" class="btn-primary w-full py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-plus"></i>
+                    添加商品
+                </button>
+            </form>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm p-4">
+            <h2 class="text-base font-semibold text-gray-900 mb-3 flex items-center">
+                <i class="fa-solid fa-list text-blue-500 mr-2"></i>商品列表
+                <span class="ml-2 text-xs font-normal text-gray-500">共 <span id="product-count">0</span> 件</span>
+            </h2>
+            <div id="product-list" class="space-y-2">
+                <div class="text-center py-8 text-gray-500">
+                    <i class="fa-solid fa-box-open text-4xl mb-2 opacity-50"></i>
+                    <p>暂无商品，添加一个吧</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const REPO = 'Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io';
+        let GITHUB_TOKEN = '';
+        let products = [];
+        let loadSuccess = false;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('add-btn').addEventListener('click', addProduct);
+            document.getElementById('save-btn').addEventListener('click', saveProducts);
+            document.getElementById('logout-btn').addEventListener('click', function() {
+                localStorage.removeItem('admin_token');
+                GITHUB_TOKEN = '';
+                location.reload();
+            });
+            document.getElementById('upload-btn').addEventListener('click', function() {
+                document.getElementById('image-file').click();
+            });
+            document.getElementById('image-file').addEventListener('change', handleImageSelect);
+            loadProducts();
+        });
+
+        function checkToken() {
+            const saved = localStorage.getItem('admin_token');
+            if (saved) {
+                GITHUB_TOKEN = saved;
+                return true;
+            }
+            const token = prompt('请输入 GitHub Token：');
+            if (token) {
+                GITHUB_TOKEN = token;
+                localStorage.setItem('admin_token', token);
+                alert('Token 已保存，下次打开页面会自动登录');
+                return true;
+            }
+            return false;
+        }
+
+        async function loadProducts() {
+            if (!checkToken()) {
+                document.getElementById('product-list').innerHTML = '<div class="text-center py-8 text-gray-500"><p>请输入 Token 后刷新页面</p></div>';
+                return;
+            }
+            try {
+                const headers = { Authorization: `token ${GITHUB_TOKEN}` };
+                const response = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, { headers });
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${data.message}`);
+                }
+                const content = base64ToUtf8(data.content);
+                const match = content.match(/var products = (\[.*?\]);/s);
+                if (match) {
+                    products = JSON.parse(match[1]);
+                    loadSuccess = true;
+                }
+            } catch (error) {
+                console.error('加载失败:', error);
+                alert('加载商品失败！请检查 Token 是否正确，或重新登录。\n\n错误信息: ' + error.message);
+                loadSuccess = false;
+            }
+            renderProductList();
+        }
+
+        function renderProductList() {
+            const container = document.getElementById('product-list');
+            document.getElementById('product-count').textContent = products.length;
+            
+            if (products.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-gray-500">
+                        <i class="fa-solid fa-box-open text-4xl mb-2 opacity-50"></i>
+                        <p>暂无商品，添加一个吧</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = products.map((product, index) => `
+                <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <img src="${product.image}" alt="${product.name}" class="w-14 h-14 object-cover rounded-lg" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;56&quot; height=&quot;56&quot; viewBox=&quot;0 0 56 56&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;56&quot; height=&quot;56&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;12&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品%3C/text%3E%3C/svg%3E'">
+                    <div class="flex-1 min-w-0">
+                        <h4 class="font-medium text-gray-900 truncate text-sm">${product.name}</h4>
+                        <p class="text-xs text-gray-500">¥${product.price}/${product.unit} · 起订${product.minOrder}</p>
+                    </div>
+                    <div class="flex items-center gap-1">
+                        <button onclick="editProduct(${index})" class="w-8 h-8 flex items-center justify-center text-blue-600 hover:bg-blue-50 rounded-lg">
+                            <i class="fa-solid fa-edit text-sm"></i>
+                        </button>
+                        <button onclick="deleteProduct(${index})" class="w-8 h-8 flex items-center justify-center text-red-600 hover:bg-red-50 rounded-lg">
+                            <i class="fa-solid fa-trash text-sm"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addProduct() {
+            console.log('addProduct called');
+            const btn = document.getElementById('add-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 添加中...';
+            btn.disabled = true;
+
+            try {
+                const name = document.getElementById('name').value.trim();
+                const category = document.getElementById('category').value;
+                const price = parseFloat(document.getElementById('price').value);
+                const unit = document.getElementById('unit').value.trim();
+                const minOrder = parseInt(document.getElementById('minOrder').value);
+
+                if (!name) {
+                    alert('请输入商品名称');
+                    return;
+                }
+                if (!category) {
+                    alert('请选择分类');
+                    return;
+                }
+                if (isNaN(price) || price <= 0) {
+                    alert('请输入有效的批发价');
+                    return;
+                }
+                if (!unit) {
+                    alert('请输入单位');
+                    return;
+                }
+                if (isNaN(minOrder) || minOrder <= 0) {
+                    alert('请输入有效的起订量');
+                    return;
+                }
+
+                const specsText = document.getElementById('specifications').value;
+                const specs = specsText.split('\n').filter(line => line.trim()).map(line => {
+                    const [name, value] = line.split(':').map(s => s.trim());
+                    return { name: name || '规格', value: value || '' };
+                });
+
+                const newProduct = {
+                    id: Date.now(),
+                    name: name,
+                    category: category,
+                    price: price,
+                    originalPrice: parseFloat(document.getElementById('originalPrice').value) || 0,
+                    unit: unit,
+                    minOrder: minOrder,
+                    sales: 0,
+                    stock: parseInt(document.getElementById('stock').value) || 100,
+                    image: document.getElementById('image').value || generateImageUrl(name),
+                    description: document.getElementById('description').value,
+                    specifications: specs.length > 0 ? specs : [{ name: '规格', value: '-' }]
+                };
+
+                products.push(newProduct);
+                renderProductList();
+                document.getElementById('product-form').reset();
+                alert('商品添加成功！点击"保存更新"即可生效');
+            } catch (error) {
+                console.error('添加失败:', error);
+                alert('添加失败: ' + error.message);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        function editProduct(index) {
+            const product = products[index];
+            document.getElementById('name').value = product.name;
+            document.getElementById('category').value = product.category;
+            document.getElementById('price').value = product.price;
+            document.getElementById('originalPrice').value = product.originalPrice;
+            document.getElementById('unit').value = product.unit;
+            document.getElementById('minOrder').value = product.minOrder;
+            document.getElementById('stock').value = product.stock;
+            document.getElementById('image').value = product.image;
+            document.getElementById('description').value = product.description;
+            
+            const specsText = product.specifications.map(s => `${s.name}: ${s.value}`).join('\n');
+            document.getElementById('specifications').value = specsText;
+
+            products.splice(index, 1);
+            renderProductList();
+        }
+
+        function deleteProduct(index) {
+            if (confirm('确定要删除吗？')) {
+                products.splice(index, 1);
+                renderProductList();
+            }
+        }
+
+        function generateImageUrl(name) {
+            const prompt = encodeURIComponent(`${name} product photo white background`);
+            return `https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=${prompt}&image_size=square`;
+        }
+
+        function utf8ToBase64(str) {
+            const encoder = new TextEncoder();
+            const bytes = encoder.encode(str);
+            let binary = '';
+            for (let i = 0; i < bytes.length; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            return btoa(binary);
+        }
+
+        function base64ToUtf8(b64) {
+            const binary = atob(b64);
+            const bytes = new Uint8Array(binary.length);
+            for (let i = 0; i < binary.length; i++) {
+                bytes[i] = binary.charCodeAt(i);
+            }
+            return new TextDecoder('utf-8').decode(bytes);
+        }
+
+        function handleImageSelect(event) {
+            uploadSelectedImage(event.target.files[0]);
+            event.target.value = '';
+        }
+
+        async function uploadSelectedImage(file) {
+            if (!file) return;
+
+            if (!GITHUB_TOKEN) {
+                alert('请先登录（输入Token）');
+                return;
+            }
+
+            if (file.size > 5 * 1024 * 1024) {
+                alert('图片太大，请选择小于5MB的图片');
+                return;
+            }
+
+            const uploadBtn = document.getElementById('upload-btn');
+            const originalText = uploadBtn.innerHTML;
+            uploadBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>上传中...';
+            uploadBtn.disabled = true;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const base64 = e.target.result.split(',')[1];
+                const filename = `images/${Date.now()}_${file.name}`;
+                
+                try {
+                    const headers = {
+                        Authorization: `token ${GITHUB_TOKEN}`,
+                        'Content-Type': 'application/json'
+                    };
+                    
+                    const body = {
+                        message: `Upload image: ${filename}`,
+                        content: base64
+                    };
+                    
+                    const response = await fetch(`https://api.github.com/repos/${REPO}/contents/${filename}`, {
+                        method: 'PUT',
+                        headers,
+                        body: JSON.stringify(body)
+                    });
+                    
+                    const data = await response.json();
+                    
+                    if (data.content) {
+                        const imageUrl = `https://raw.githubusercontent.com/${REPO}/main/${filename}`;
+                        document.getElementById('image').value = imageUrl;
+                        alert('图片上传成功！');
+                    } else if (data.message) {
+                        alert('上传失败: ' + data.message);
+                    } else {
+                        alert('上传失败，请重试');
+                    }
+                } catch (error) {
+                    console.error('上传失败:', error);
+                    alert('上传失败，请检查网络或Token');
+                } finally {
+                    uploadBtn.innerHTML = originalText;
+                    uploadBtn.disabled = false;
+                }
+            };
+            
+            reader.onerror = function() {
+                alert('读取图片失败');
+                uploadBtn.innerHTML = originalText;
+                uploadBtn.disabled = false;
+            };
+            
+            reader.readAsDataURL(file);
+        }
+
+        async function saveProducts() {
+            if (products.length === 0) {
+                alert('没有商品可保存');
+                return;
+            }
+            if (products.length < 2) {
+                if (!confirm(`当前只有 ${products.length} 件商品，确定要保存吗？\n\n如果之前有更多商品，可能是加载失败导致数据丢失。建议先刷新页面重新加载。`)) {
+                    return;
+                }
+            }
+
+            const btn = document.getElementById('save-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 保存中...';
+            btn.disabled = true;
+
+            try {
+                if (!loadSuccess) {
+                    alert('错误：商品数据加载失败！请刷新页面重新登录后再试。');
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+                
+                if (products.length === 0) {
+                    alert('错误：没有商品数据！请刷新页面重新登录后再试。');
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                    return;
+                }
+                
+                console.log('正在保存', products.length, '件商品');
+                
+                const headers = {
+                    Authorization: `token ${GITHUB_TOKEN}`,
+                    'Content-Type': 'application/json'
+                };
+
+                const response = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, { headers });
+                const data = await response.json();
+                
+                const code = `var products = ${JSON.stringify(products, null, 4)};\n\nfunction getProductById(id) {\n    return products.find(p => p.id === parseInt(id));\n}\n\nfunction getProductsByCategory(category) {\n    if (category === 'all') return products;\n    return products.filter(p => p.category === category);\n}\n\nconst CART_KEY = 'wholesale_cart';\n\nfunction getCart() {\n    try {\n        const cart = localStorage.getItem(CART_KEY);\n        return cart ? JSON.parse(cart) : [];\n    } catch {\n        return [];\n    }\n}\n\nfunction saveCart(cart) {\n    localStorage.setItem(CART_KEY, JSON.stringify(cart));\n}\n\nfunction addToCart(productId, quantity) {\n    const cart = getCart();\n    const product = getProductById(productId);\n    if (!product) return false;\n    \n    const existingItem = cart.find(item => item.id === productId);\n    if (existingItem) {\n        existingItem.quantity += quantity;\n    } else {\n        cart.push({\n            id: product.id,\n            name: product.name,\n            price: product.price,\n            unit: product.unit,\n            minOrder: product.minOrder,\n            image: product.image,\n            quantity: quantity\n        });\n    }\n    saveCart(cart);\n    return true;\n}\n\nfunction updateCartItem(productId, quantity) {\n    const cart = getCart();\n    const item = cart.find(item => item.id === productId);\n    if (item) {\n        if (quantity <= 0) {\n            removeFromCart(productId);\n        } else {\n            item.quantity = quantity;\n            saveCart(cart);\n        }\n    }\n}\n\nfunction removeFromCart(productId) {\n    const cart = getCart();\n    const filteredCart = cart.filter(item => item.id !== productId);\n    saveCart(filteredCart);\n}\n\nfunction clearCart() {\n    localStorage.removeItem(CART_KEY);\n}\n\nfunction getCartItemCount() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + item.quantity, 0);\n}\n\nfunction getCartTotal() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);\n}\n\nfunction getCartItems() {\n    const cart = getCart();\n    return cart;\n}\n`;
+
+                const base64 = utf8ToBase64(code);
+                
+                const body = {
+                    message: 'Update products',
+                    content: base64,
+                    sha: data.sha
+                };
+
+                let putResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(body)
+                });
+
+                if (putResponse.status === 409) {
+                    console.log('SHA冲突，重新获取并重试...');
+                    const newResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, { headers });
+                    const newData = await newResponse.json();
+                    body.sha = newData.sha;
+                    putResponse = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, {
+                        method: 'PUT',
+                        headers,
+                        body: JSON.stringify(body)
+                    });
+                }
+
+                console.log('保存响应:', putResponse.status);
+
+                if (putResponse.ok) {
+                    const putData = await putResponse.json();
+                    if (putData.content && putData.content.sha) {
+                        currentSHA = putData.content.sha;
+                        console.log('SHA已更新:', currentSHA);
+                    }
+                    await incrementVersion();
+                    alert('保存成功！网站已更新\n访问 https://Ezhenyuan888shangmao.github.io');
+                    await loadProducts();
+                } else {
+                    const errorData = await putResponse.json();
+                    console.error('保存失败详情:', errorData);
+                    let errorMsg = '保存失败！\n';
+                    if (errorData.message) {
+                        errorMsg += '错误: ' + errorData.message + '\n';
+                    }
+                    if (errorData.documentation_url) {
+                        errorMsg += '详情: ' + errorData.documentation_url;
+                    }
+                    alert(errorMsg);
+                }
+            } catch (error) {
+                console.error('保存失败:', error);
+                let errorMsg = '保存失败！\n';
+                if (error.message) {
+                    errorMsg += '错误: ' + error.message + '\n';
+                }
+                errorMsg += '\n请检查：\n1. 网络连接是否正常\n2. Token 是否正确\n3. 浏览器控制台查看详细错误';
+                alert(errorMsg);
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        async function incrementVersion() {
+            const headers = {
+                Authorization: `token ${GITHUB_TOKEN}`,
+                'Content-Type': 'application/json'
+            };
+            try {
+                const response = await fetch(`https://api.github.com/repos/${REPO}/contents/version.json`, { headers });
+                const data = await response.json();
+                const content = JSON.parse(base64ToUtf8(data.content));
+                content.version += 1;
+                const body = {
+                    message: 'Increment version',
+                    content: utf8ToBase64(JSON.stringify(content, null, 2)),
+                    sha: data.sha
+                };
+                await fetch(`https://api.github.com/repos/${REPO}/contents/version.json`, {
+                    method: 'PUT',
+                    headers,
+                    body: JSON.stringify(body)
+                });
+                console.log('版本号已更新:', content.version);
+            } catch (error) {
+                console.error('更新版本号失败:', error);
+            }
+        }
+    </script>
+</body>
+</html>
