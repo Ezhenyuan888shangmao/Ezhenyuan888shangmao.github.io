@@ -17,6 +17,101 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784279311493,
+        "name": "欧美风1*8",
+        "category": "gift",
+        "price": 85,
+        "originalPrice": 90,
+        "unit": "提",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279293970_545c0d2b44fbbc9b75245cc68766c9ba.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784279413634,
+        "name": "欧美风1*6",
+        "category": "gift",
+        "price": 60,
+        "originalPrice": 65,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279406570_ae61c21a1daf047a1ca2117b9d66791d.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784279633860,
+        "name": "盛宴1*12",
+        "category": "gift",
+        "price": 85,
+        "originalPrice": 90,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279627611_909f479a2694b079e5457f6a175a0296.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784279712796,
+        "name": "盲盒",
+        "category": "gift",
+        "price": 55,
+        "originalPrice": 55,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279705709_f42cffeeb39d2eae0a3533b91ac64180.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784279789283,
+        "name": "12度小麦原浆",
+        "category": "alcohol",
+        "price": 50,
+        "originalPrice": 60,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784279783930_f317522242e18cce8bc1d23655baad31.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
