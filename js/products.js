@@ -17,6 +17,25 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784346643046,
+        "name": "欧美风1*6",
+        "category": "gift",
+        "price": 65,
+        "originalPrice": 70,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784346638802.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
