@@ -55,6 +55,44 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784351397472,
+        "name": "12度小麦原浆",
+        "category": "alcohol",
+        "price": 60,
+        "originalPrice": 70,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784351361258.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784351528191,
+        "name": "盲盒",
+        "category": "gift",
+        "price": 55,
+        "originalPrice": 60,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784351523549.jpg",
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
