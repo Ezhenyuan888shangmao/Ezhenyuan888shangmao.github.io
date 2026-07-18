@@ -155,7 +155,6 @@
                 <div class="flex border-b">
                     <button class="tab-btn active px-6 py-4 font-semibold text-primary border-b-2 border-primary">商品详情</button>
                     <button class="tab-btn px-6 py-4 font-semibold text-gray-600 hover:text-primary">规格参数</button>
-                    <button class="tab-btn px-6 py-4 font-semibold text-gray-600 hover:text-primary">售后服务</button>
                 </div>
                 <div class="p-6">
                     <div id="tab-detail" class="tab-content">
@@ -166,46 +165,7 @@
                             <tbody id="specs-table"></tbody>
                         </table>
                     </div>
-                    <div id="tab-service" class="tab-content hidden">
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-4">
-                                <div class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-truck text-primary"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">配送服务</h4>
-                                    <p class="text-gray-600">全国包邮，24小时内发货，支持顺丰、圆通、中通等快递。</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-shield-halved text-primary"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">正品保障</h4>
-                                    <p class="text-gray-600">所有商品均为正品，支持验货，假一赔十。</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-rotate-left text-primary"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">退换政策</h4>
-                                    <p class="text-gray-600">收到商品7天内，如发现质量问题，可申请退换货，运费由卖家承担。</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-4">
-                                <div class="bg-primary/10 w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <i class="fa-solid fa-headset text-primary"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-gray-900">客服支持</h4>
-                                    <p class="text-gray-600">7x24小时在线客服，随时解答您的疑问。</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -233,7 +193,6 @@
                 <div>
                     <h4 class="font-semibold mb-4">客户服务</h4>
                     <ul class="space-y-2 text-gray-400 text-sm">
-                        <li><a href="#" class="hover:text-white transition-colors">售后服务</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">配送说明</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">支付方式</a></li>
                         <li><a href="#" class="hover:text-white transition-colors">常见问题</a></li>
@@ -301,7 +260,6 @@
                 const tabName = this.textContent.trim();
                 if (tabName === '商品详情') switchTab('detail');
                 else if (tabName === '规格参数') switchTab('specs');
-                else if (tabName === '售后服务') switchTab('service');
             });
         });
 
