@@ -125,10 +125,10 @@
                             <i class="fa-solid fa-shopping-cart"></i>
                             加入购物车
                         </button>
-                        <button class="bg-accent flex-1 py-3 rounded-lg font-semibold text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                        <a href="tel:15937151309" class="bg-accent flex-1 py-3 rounded-lg font-semibold text-white hover:opacity-90 transition-opacity flex items-center justify-center gap-2" onclick="showPhoneNumber()">
                             <i class="fa-solid fa-phone"></i>
                             立即询价
-                        </button>
+                        </a>
                     </div>
                     <div class="flex items-center gap-6 mt-6 text-sm text-gray-500">
                         <div class="flex items-center gap-1">
@@ -239,6 +239,10 @@
         function increaseQuantity() {
             const input = document.getElementById('quantity');
             input.value = parseInt(input.value) + 1;
+        }
+
+        function showPhoneNumber() {
+            alert('联系电话：15937151309');
         }
 
         function switchTab(tabName) {
