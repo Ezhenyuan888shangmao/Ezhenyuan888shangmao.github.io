@@ -246,6 +246,29 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784430546598,
+        "name": "仲盛养生酒",
+        "category": "alcohol",
+        "price": 192,
+        "originalPrice": 240,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430512103.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430527183.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430536003.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
