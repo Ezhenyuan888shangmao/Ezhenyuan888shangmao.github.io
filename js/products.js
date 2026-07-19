@@ -139,16 +139,127 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784430080205,
+        "name": "52度牛薯地瓜烧",
+        "category": "alcohol",
+        "price": 240,
+        "originalPrice": 300,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430075984.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784430152115,
+        "name": "山西老酒",
+        "category": "alcohol",
+        "price": 360,
+        "originalPrice": 450,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430104097.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784430217489,
+        "name": "20年山西老酒（盒酒）",
+        "category": "alcohol",
+        "price": 360,
+        "originalPrice": 528,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430163381.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784430333963,
+        "name": "仲盛三宝酒",
+        "category": "alcohol",
+        "price": 80,
+        "originalPrice": 100,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430282068.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430292931.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784430417579,
+        "name": "仲盛三鞭酒",
+        "category": "alcohol",
+        "price": 180,
+        "originalPrice": 225,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430354718.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784430374507.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
+
 function getProductById(id) {
     return products.find(p => p.id === parseInt(id));
 }
+
 function getProductsByCategory(category) {
     if (category === 'all') return products;
     return products.filter(p => p.category === category);
 }
+
 const CART_KEY = 'wholesale_cart';
+
 function getCart() {
     try {
         const cart = localStorage.getItem(CART_KEY);
@@ -157,9 +268,11 @@ function getCart() {
         return [];
     }
 }
+
 function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
+
 function addToCart(productId, quantity) {
     const cart = getCart();
     const product = getProductById(productId);
@@ -182,6 +295,7 @@ function addToCart(productId, quantity) {
     saveCart(cart);
     return true;
 }
+
 function updateCartItem(productId, quantity) {
     const cart = getCart();
     const item = cart.find(item => item.id === productId);
@@ -194,22 +308,27 @@ function updateCartItem(productId, quantity) {
         }
     }
 }
+
 function removeFromCart(productId) {
     const cart = getCart();
     const filteredCart = cart.filter(item => item.id !== productId);
     saveCart(filteredCart);
 }
+
 function clearCart() {
     localStorage.removeItem(CART_KEY);
 }
+
 function getCartItemCount() {
     const cart = getCart();
     return cart.reduce((total, item) => total + item.quantity, 0);
 }
+
 function getCartTotal() {
     const cart = getCart();
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 }
+
 function getCartItems() {
     const cart = getCart();
     return cart;
