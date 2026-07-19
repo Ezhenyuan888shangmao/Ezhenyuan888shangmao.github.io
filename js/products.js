@@ -141,18 +141,14 @@ var products = [
         ]
     }
 ];
-
 function getProductById(id) {
     return products.find(p => p.id === parseInt(id));
 }
-
 function getProductsByCategory(category) {
     if (category === 'all') return products;
     return products.filter(p => p.category === category);
 }
-
 const CART_KEY = 'wholesale_cart';
-
 function getCart() {
     try {
         const cart = localStorage.getItem(CART_KEY);
@@ -161,11 +157,9 @@ function getCart() {
         return [];
     }
 }
-
 function saveCart(cart) {
     localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
-
 function addToCart(productId, quantity) {
     const cart = getCart();
     const product = getProductById(productId);
@@ -188,7 +182,6 @@ function addToCart(productId, quantity) {
     saveCart(cart);
     return true;
 }
-
 function updateCartItem(productId, quantity) {
     const cart = getCart();
     const item = cart.find(item => item.id === productId);
@@ -201,27 +194,22 @@ function updateCartItem(productId, quantity) {
         }
     }
 }
-
 function removeFromCart(productId) {
     const cart = getCart();
     const filteredCart = cart.filter(item => item.id !== productId);
     saveCart(filteredCart);
 }
-
 function clearCart() {
     localStorage.removeItem(CART_KEY);
 }
-
 function getCartItemCount() {
     const cart = getCart();
     return cart.reduce((total, item) => total + item.quantity, 0);
 }
-
 function getCartTotal() {
     const cart = getCart();
     return cart.reduce((total, item) => total + (item.price * item.quantity), 0);
 }
-
 function getCartItems() {
     const cart = getCart();
     return cart;
