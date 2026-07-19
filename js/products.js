@@ -468,7 +468,7 @@ var products = [
         ]
     },
     {
-        "id": 1784455954347,
+        "id": 1784455988285,
         "name": "金星干啤",
         "category": "alcohol",
         "price": 78,
@@ -493,7 +493,7 @@ var products = [
                 "value": ""
             },
             {
-                "name": "8度",
+                "name": "麦汁浓度：8度",
                 "value": ""
             }
         ]
