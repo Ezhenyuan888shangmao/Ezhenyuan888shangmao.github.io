@@ -209,31 +209,6 @@ var products = [
         ]
     },
     {
-        "id": 1784454829847,
-        "name": "仲盛养生酒",
-        "category": "gift",
-        "price": 192,
-        "originalPrice": 240,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 100,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454779201.jpg"
-        ],
-        "description": "",
-        "specifications": [
-            {
-                "name": "165ml*24",
-                "value": ""
-            },
-            {
-                "name": "保质期：5年",
-                "value": ""
-            }
-        ]
-    },
-    {
         "id": 1784454904918,
         "name": "43度500ml蓝屏红星二锅头",
         "category": "alcohol",
@@ -250,48 +225,6 @@ var products = [
         "specifications": [
             {
                 "name": "500ml*12",
-                "value": ""
-            }
-        ]
-    },
-    {
-        "id": 1784455001967,
-        "name": "43度750ml蓝瓶红星二锅头",
-        "category": "alcohol",
-        "price": 270,
-        "originalPrice": 300,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 100,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454959589.jpg"
-        ],
-        "description": "",
-        "specifications": [
-            {
-                "name": "750*6瓶",
-                "value": ""
-            }
-        ]
-    },
-    {
-        "id": 1784455161489,
-        "name": "53度500ml蓝瓶红星二锅头",
-        "category": "gift",
-        "price": 456,
-        "originalPrice": 480,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 100,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455130928.jpg"
-        ],
-        "description": "",
-        "specifications": [
-            {
-                "name": "500ml*6瓶",
                 "value": ""
             }
         ]
@@ -425,49 +358,6 @@ var products = [
         ]
     },
     {
-        "id": 1784455861647,
-        "name": "8年衡水老白干（18年老酒）",
-        "category": "alcohol",
-        "price": 680,
-        "originalPrice": 758,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 20,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455739888.jpg"
-        ],
-        "description": "",
-        "specifications": [
-            {
-                "name": "500ml*4瓶",
-                "value": ""
-            }
-        ]
-    },
-    {
-        "id": 1784455870806,
-        "name": "五年衡水老白干（18年老酒）",
-        "category": "gift",
-        "price": 320,
-        "originalPrice": 480,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 20,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455619973.jpg",
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455627588.jpg"
-        ],
-        "description": "",
-        "specifications": [
-            {
-                "name": "46度 500ml*4瓶",
-                "value": ""
-            }
-        ]
-    },
-    {
         "id": 1784455988285,
         "name": "金星干啤",
         "category": "alcohol",
@@ -494,6 +384,116 @@ var products = [
             },
             {
                 "name": "麦汁浓度：8度",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": 1784456105328,
+        "name": "五年衡水老白干（18年老酒）",
+        "category": "alcohol",
+        "price": 320,
+        "originalPrice": 480,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 20,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455619973.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455627588.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "46度 500ml*4瓶",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": 1784456112819,
+        "name": "8年衡水老白干（18年老酒）",
+        "category": "alcohol",
+        "price": 680,
+        "originalPrice": 758,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 20,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455739888.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "500ml*4瓶",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": 1784456171448,
+        "name": "43度750ml蓝瓶红星二锅头",
+        "category": "alcohol",
+        "price": 270,
+        "originalPrice": 300,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454959589.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "750*6瓶",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": 1784456195954,
+        "name": "53度500ml蓝瓶红星二锅头",
+        "category": "alcohol",
+        "price": 456,
+        "originalPrice": 480,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455130928.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "500ml*6瓶",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "id": 1784456215402,
+        "name": "仲盛养生酒",
+        "category": "alcohol",
+        "price": 192,
+        "originalPrice": 240,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454779201.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "165ml*24",
+                "value": ""
+            },
+            {
+                "name": "保质期：5年",
                 "value": ""
             }
         ]
