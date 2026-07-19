@@ -461,6 +461,29 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784434861965,
+        "name": "金星干啤",
+        "category": "alcohol",
+        "price": 78,
+        "originalPrice": 84,
+        "unit": "箱",
+        "minOrder": 5,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434759901.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434767069.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434776435.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
