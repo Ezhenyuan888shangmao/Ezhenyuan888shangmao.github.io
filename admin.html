@@ -209,7 +209,7 @@
 
             container.innerHTML = products.map((product, index) => `
                 <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
-                    <img src="${product.image}" alt="${product.name}" class="w-14 h-14 object-cover rounded-lg" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;56&quot; height=&quot;56&quot; viewBox=&quot;0 0 56 56&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;56&quot; height=&quot;56&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;12&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品%3C/text%3E%3C/svg%3E'">
+                    <img src="${product.images ? product.images[0] : product.image}" alt="${product.name}" class="w-14 h-14 object-cover rounded-lg" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;56&quot; height=&quot;56&quot; viewBox=&quot;0 0 56 56&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;56&quot; height=&quot;56&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;12&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品%3C/text%3E%3C/svg%3E'">
                     <div class="flex-1 min-w-0">
                         <h4 class="font-medium text-gray-900 truncate text-sm">${product.name}</h4>
                         <p class="text-xs text-gray-500">¥${product.price}/${product.unit} · 起订${product.minOrder}</p>
