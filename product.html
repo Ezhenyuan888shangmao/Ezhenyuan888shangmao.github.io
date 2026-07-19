@@ -81,8 +81,17 @@
     <section id="product-detail" class="py-8 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div class="aspect-square bg-gray-100 rounded-xl overflow-hidden">
-                    <img id="product-image" src="" alt="商品图片" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;400&quot; height=&quot;400&quot; viewBox=&quot;0 0 400 400&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;400&quot; height=&quot;400&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;18&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品图片%3C/text%3E%3C/svg%3E'">
+                <div class="relative aspect-square bg-gray-100 rounded-xl overflow-hidden">
+                    <div id="image-carousel" class="flex transition-transform duration-300 ease-in-out w-full h-full" style="transform: translateX(0);">
+                    </div>
+                    <button id="prev-btn" class="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-md">
+                        <i class="fa-solid fa-chevron-left text-gray-700"></i>
+                    </button>
+                    <button id="next-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 w-10 h-10 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-md">
+                        <i class="fa-solid fa-chevron-right text-gray-700"></i>
+                    </button>
+                    <div id="image-indicators" class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    </div>
                 </div>
                 <div>
                     <div class="mb-4">
@@ -264,10 +273,12 @@
             });
         });
 
+        let currentImageIndex = 0;
+
         function renderProduct(product) {
             currentProduct = product;
             document.getElementById('breadcrumb-name').textContent = product.name;
-            document.getElementById('product-image').src = product.image;
+            renderImageCarousel(product);
             document.getElementById('product-name').textContent = product.name;
             document.getElementById('product-price').textContent = '¥' + product.price;
             document.getElementById('product-original-price').textContent = '¥' + product.originalPrice;
@@ -299,6 +310,51 @@
                 </tr>
             `).join('');
         }
+
+        function renderImageCarousel(product) {
+            const images = product.images || [product.image];
+            const carousel = document.getElementById('image-carousel');
+            const indicators = document.getElementById('image-indicators');
+            currentImageIndex = 0;
+
+            carousel.innerHTML = images.map(img => `
+                <div class="min-w-full h-full flex-shrink-0">
+                    <img src="${img}" alt="商品图片" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;400&quot; height=&quot;400&quot; viewBox=&quot;0 0 400 400&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;400&quot; height=&quot;400&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;18&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品图片%3C/text%3E%3C/svg%3E'">
+                </div>
+            `).join('');
+
+            indicators.innerHTML = images.map((_, index) => `
+                <button onclick="goToImage(${index})" class="w-2 h-2 rounded-full transition-colors ${index === 0 ? 'bg-primary' : 'bg-gray-400'}"></button>
+            `).join('');
+
+            if (images.length <= 1) {
+                document.getElementById('prev-btn').style.display = 'none';
+                document.getElementById('next-btn').style.display = 'none';
+                indicators.style.display = 'none';
+            } else {
+                document.getElementById('prev-btn').style.display = 'flex';
+                document.getElementById('next-btn').style.display = 'flex';
+                indicators.style.display = 'flex';
+            }
+        }
+
+        function goToImage(index) {
+            const images = currentProduct.images || [currentProduct.image];
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+            currentImageIndex = index;
+            
+            const carousel = document.getElementById('image-carousel');
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+            
+            const indicators = document.getElementById('image-indicators');
+            Array.from(indicators.children).forEach((btn, i) => {
+                btn.className = `w-2 h-2 rounded-full transition-colors ${i === index ? 'bg-primary' : 'bg-gray-400'}`;
+            });
+        }
+
+        document.getElementById('prev-btn').addEventListener('click', () => goToImage(currentImageIndex - 1));
+        document.getElementById('next-btn').addEventListener('click', () => goToImage(currentImageIndex + 1));
 
         function handleAddToCart() {
             if (!currentProduct) return;
