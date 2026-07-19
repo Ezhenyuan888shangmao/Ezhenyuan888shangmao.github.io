@@ -65,7 +65,7 @@ function renderProducts() {
                 </button>
             </div>
         </div>
-    `).join('');
+    `}).join('');
     initLazyLoad();
 }
 
