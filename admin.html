@@ -132,6 +132,7 @@
         let products = [];
         let loadSuccess = false;
         let productImages = [];
+        let editingIndex = -1;
 
         document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('add-btn').addEventListener('click', addProduct);
@@ -280,27 +281,47 @@
                 });
 
                 const images = productImages.length > 0 ? productImages : [document.getElementById('image').value || generateImageUrl(name)];
-                const newProduct = {
-                    id: Date.now(),
-                    name: name,
-                    category: category,
-                    price: price,
-                    originalPrice: parseFloat(document.getElementById('originalPrice').value) || 0,
-                    unit: unit,
-                    minOrder: minOrder,
-                    sales: 0,
-                    stock: parseInt(document.getElementById('stock').value) || 100,
-                    images: images,
-                    description: document.getElementById('description').value,
-                    specifications: specs.length > 0 ? specs : [{ name: '规格', value: '-' }]
-                };
-
-                products.push(newProduct);
+                
+                if (editingIndex !== -1) {
+                    products[editingIndex] = {
+                        ...products[editingIndex],
+                        name: name,
+                        category: category,
+                        price: price,
+                        originalPrice: parseFloat(document.getElementById('originalPrice').value) || 0,
+                        unit: unit,
+                        minOrder: minOrder,
+                        stock: parseInt(document.getElementById('stock').value) || 100,
+                        images: images,
+                        description: document.getElementById('description').value,
+                        specifications: specs.length > 0 ? specs : [{ name: '规格', value: '-' }]
+                    };
+                    editingIndex = -1;
+                    document.getElementById('add-btn').innerHTML = '<i class="fa-solid fa-plus"></i> 添加商品';
+                    alert('商品修改成功！点击"保存更新"即可生效');
+                } else {
+                    const newProduct = {
+                        id: Date.now(),
+                        name: name,
+                        category: category,
+                        price: price,
+                        originalPrice: parseFloat(document.getElementById('originalPrice').value) || 0,
+                        unit: unit,
+                        minOrder: minOrder,
+                        sales: 0,
+                        stock: parseInt(document.getElementById('stock').value) || 100,
+                        images: images,
+                        description: document.getElementById('description').value,
+                        specifications: specs.length > 0 ? specs : [{ name: '规格', value: '-' }]
+                    };
+                    products.push(newProduct);
+                    alert('商品添加成功！点击"保存更新"即可生效');
+                }
+                
                 renderProductList();
                 document.getElementById('product-form').reset();
                 productImages = [];
                 renderImagePreview();
-                alert('商品添加成功！点击"保存更新"即可生效');
             } catch (error) {
                 console.error('添加失败:', error);
                 alert('添加失败: ' + error.message);
@@ -330,8 +351,8 @@
             }
             renderImagePreview();
 
-            products.splice(index, 1);
-            renderProductList();
+            editingIndex = index;
+            document.getElementById('add-btn').innerHTML = '<i class="fa-solid fa-save"></i> 保存修改';
         }
 
         function deleteProduct(index) {
