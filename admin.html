@@ -180,9 +180,21 @@
                     throw new Error(`HTTP ${response.status}: ${data.message}`);
                 }
                 const content = base64ToUtf8(data.content);
-                const match = content.match(/var products = (\[.*?\]);/s);
-                if (match) {
-                    products = JSON.parse(match[1]);
+                const startIndex = content.indexOf('var products = [');
+                if (startIndex !== -1) {
+                    const jsonStart = startIndex + 'var products = '.length;
+                    let depth = 0;
+                    let jsonEnd = jsonStart;
+                    for (let i = jsonStart; i < content.length; i++) {
+                        if (content[i] === '[') depth++;
+                        if (content[i] === ']') depth--;
+                        if (depth === 0) {
+                            jsonEnd = i + 1;
+                            break;
+                        }
+                    }
+                    const jsonStr = content.substring(jsonStart, jsonEnd);
+                    products = JSON.parse(jsonStr);
                     loadSuccess = true;
                 }
             } catch (error) {
@@ -536,7 +548,7 @@
                 const response = await fetch(`https://api.github.com/repos/${REPO}/contents/js/products.js`, { headers });
                 const data = await response.json();
                 
-                const code = `var products = ${JSON.stringify(products, null, 4)};\n\nfunction getProductById(id) {\n    return products.find(p => p.id === parseInt(id));\n}\n\nfunction getProductsByCategory(category) {\n    if (category === 'all') return products;\n    return products.filter(p => p.category === category);\n}\n\nconst CART_KEY = 'wholesale_cart';\n\nfunction getCart() {\n    try {\n        const cart = localStorage.getItem(CART_KEY);\n        return cart ? JSON.parse(cart) : [];\n    } catch {\n        return [];\n    }\n}\n\nfunction saveCart(cart) {\n    localStorage.setItem(CART_KEY, JSON.stringify(cart));\n}\n\nfunction addToCart(productId, quantity) {\n    const cart = getCart();\n    const product = getProductById(productId);\n    if (!product) return false;\n    \n    const existingItem = cart.find(item => item.id === productId);\n    if (existingItem) {\n        existingItem.quantity += quantity;\n    } else {\n        cart.push({\n            id: product.id,\n            name: product.name,\n            price: product.price,\n            unit: product.unit,\n            minOrder: product.minOrder,\n            image: product.image,\n            quantity: quantity\n        });\n    }\n    saveCart(cart);\n    return true;\n}\n\nfunction updateCartItem(productId, quantity) {\n    const cart = getCart();\n    const item = cart.find(item => item.id === productId);\n    if (item) {\n        if (quantity <= 0) {\n            removeFromCart(productId);\n        } else {\n            item.quantity = quantity;\n            saveCart(cart);\n        }\n    }\n}\n\nfunction removeFromCart(productId) {\n    const cart = getCart();\n    const filteredCart = cart.filter(item => item.id !== productId);\n    saveCart(filteredCart);\n}\n\nfunction clearCart() {\n    localStorage.removeItem(CART_KEY);\n}\n\nfunction getCartItemCount() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + item.quantity, 0);\n}\n\nfunction getCartTotal() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);\n}\n\nfunction getCartItems() {\n    const cart = getCart();\n    return cart;\n}\n`;
+                const code = `var products = ${JSON.stringify(products, null, 4)};\n\nfunction getProductById(id) {\n    return products.find(p => p.id === parseInt(id));\n}\n\nfunction getProductsByCategory(category) {\n    if (category === 'all') return products;\n    return products.filter(p => p.category === category);\n}\n\nconst CART_KEY = 'wholesale_cart';\n\nfunction getCart() {\n    try {\n        const cart = localStorage.getItem(CART_KEY);\n        return cart ? JSON.parse(cart) : [];\n    } catch {\n        return [];\n    }\n}\n\nfunction saveCart(cart) {\n    localStorage.setItem(CART_KEY, JSON.stringify(cart));\n}\n\nfunction addToCart(productId, quantity) {\n    const cart = getCart();\n    const product = getProductById(productId);\n    if (!product) return false;\n    \n    const existingItem = cart.find(item => item.id === productId);\n    if (existingItem) {\n        existingItem.quantity += quantity;\n    } else {\n        cart.push({\n            id: product.id,\n            name: product.name,\n            price: product.price,\n            unit: product.unit,\n            minOrder: product.minOrder,\n            image: product.images ? product.images[0] : product.image,\n            quantity: quantity\n        });\n    }\n    saveCart(cart);\n    return true;\n}\n\nfunction updateCartItem(productId, quantity) {\n    const cart = getCart();\n    const item = cart.find(item => item.id === productId);\n    if (item) {\n        if (quantity <= 0) {\n            removeFromCart(productId);\n        } else {\n            item.quantity = quantity;\n            saveCart(cart);\n        }\n    }\n}\n\nfunction removeFromCart(productId) {\n    const cart = getCart();\n    const filteredCart = cart.filter(item => item.id !== productId);\n    saveCart(filteredCart);\n}\n\nfunction clearCart() {\n    localStorage.removeItem(CART_KEY);\n}\n\nfunction getCartItemCount() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + item.quantity, 0);\n}\n\nfunction getCartTotal() {\n    const cart = getCart();\n    return cart.reduce((total, item) => total + (item.price * item.quantity), 0);\n}\n\nfunction getCartItems() {\n    const cart = getCart();\n    return cart;\n}\n`;
 
                 const base64 = utf8ToBase64(code);
                 
