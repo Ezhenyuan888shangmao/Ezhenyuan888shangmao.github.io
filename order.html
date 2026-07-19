@@ -128,6 +128,27 @@
         </div>
     </main>
 
+    <div id="payment-modal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4 text-center shadow-2xl">
+            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-check text-green-600 text-2xl"></i>
+            </div>
+            <h3 class="text-2xl font-bold text-gray-900 mb-2">订单提交成功</h3>
+            <p class="text-gray-600 mb-6">请使用微信或支付宝扫描下方二维码付款</p>
+            <div class="bg-gray-50 rounded-xl p-4 mb-6">
+                <img src="fukuanma.png" alt="付款码" class="w-full max-w-xs mx-auto rounded-lg border-2 border-white shadow-lg">
+            </div>
+            <div class="bg-primary/10 rounded-lg p-4 mb-6">
+                <p class="text-sm text-gray-600 mb-1">应付金额</p>
+                <p id="payment-total" class="text-3xl font-bold text-primary">¥0.00</p>
+            </div>
+            <button onclick="closePaymentModal()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                付款完成，返回首页
+            </button>
+            <p class="text-xs text-gray-500 mt-4">付款后请等待客服确认订单</p>
+        </div>
+    </div>
+
     <footer class="bg-gray-900 text-white py-8 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -284,14 +305,22 @@
                     method: 'GET'
                 });
 
-                alert('订单提交成功！客服会尽快联系您确认订单。');
                 clearCart();
-                window.location.href = 'index.html';
+                showPaymentCode(order.total.toFixed(2));
             } catch (error) {
-                alert('订单提交成功！客服会尽快联系您确认订单。');
                 clearCart();
-                window.location.href = 'index.html';
+                showPaymentCode(order.total.toFixed(2));
             }
+        }
+
+        function showPaymentCode(total) {
+            document.getElementById('payment-total').textContent = '¥' + total;
+            document.getElementById('payment-modal').classList.remove('hidden');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            window.location.href = 'index.html';
         }
 
         document.addEventListener('DOMContentLoaded', () => {
