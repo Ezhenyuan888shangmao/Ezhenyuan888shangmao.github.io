@@ -263,42 +263,7 @@
         </div>
     </footer>
 
-    <script src="js/products.js"></script>
+    <script src="js/products.js?v=4"></script>
     <script src="js/main.js"></script>
-    <script>
-        (async function checkVersion() {
-            try {
-                const response = await fetch('https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/version.json?v=' + Date.now(), {cache: 'no-store'});
-                const data = await response.json();
-                const currentVersion = localStorage.getItem('product_version');
-                if (data.version !== parseInt(currentVersion)) {
-                    localStorage.setItem('product_version', data.version);
-                    const prodResponse = await fetch('https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/js/products.js', {cache: 'no-store'});
-                    const prodText = await prodResponse.text();
-                    const startIndex = prodText.indexOf('var products = [');
-                    if (startIndex !== -1) {
-                        const jsonStart = startIndex + 'var products = '.length;
-                        let depth = 0;
-                        let jsonEnd = jsonStart;
-                        for (let i = jsonStart; i < prodText.length; i++) {
-                            if (prodText[i] === '[') depth++;
-                            if (prodText[i] === ']') depth--;
-                            if (depth === 0) {
-                                jsonEnd = i + 1;
-                                break;
-                            }
-                        }
-                        const jsonStr = prodText.substring(jsonStart, jsonEnd);
-                        window.products = JSON.parse(jsonStr);
-                        if (typeof renderProducts === 'function') {
-                            renderProducts();
-                        }
-                    }
-                }
-            } catch (e) {
-                console.log('版本检查失败:', e);
-            }
-        })();
-    </script>
 </body>
 </html>
