@@ -269,6 +269,198 @@ var products = [
                 "value": "-"
             }
         ]
+    },
+    {
+        "id": 1784433574265,
+        "name": "43度蓝瓶红星二锅头",
+        "category": "alcohol",
+        "price": 456,
+        "originalPrice": 480,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433488955.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784433612443,
+        "name": "750ml34度红星二锅头",
+        "category": "alcohol",
+        "price": 270,
+        "originalPrice": 300,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433608430.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784433674595,
+        "name": "53度红星二锅头",
+        "category": "alcohol",
+        "price": 456,
+        "originalPrice": 480,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433669532.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784433732479,
+        "name": "750ml53度红星二锅头",
+        "category": "alcohol",
+        "price": 270,
+        "originalPrice": 300,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433715292.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784433862106,
+        "name": "仙潭30",
+        "category": "alcohol",
+        "price": 480,
+        "originalPrice": 600,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433773250.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433785256.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784433971872,
+        "name": "白潭大匠为",
+        "category": "alcohol",
+        "price": 600,
+        "originalPrice": 780,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433893652.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784433903036.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784434084455,
+        "name": "绵竹大曲",
+        "category": "alcohol",
+        "price": 216,
+        "originalPrice": 300,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434012526.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784434193023,
+        "name": "五年衡水老白干（18年酒）",
+        "category": "alcohol",
+        "price": 320,
+        "originalPrice": 400,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434101632.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434144251.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784434249929,
+        "name": "8年衡水老白干（18年酒",
+        "category": "alcohol",
+        "price": 520,
+        "originalPrice": 680,
+        "unit": "箱",
+        "minOrder": 2,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784434246037.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
     }
 ];
 
