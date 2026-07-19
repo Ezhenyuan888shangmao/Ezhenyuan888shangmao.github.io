@@ -40,10 +40,7 @@ function renderProducts() {
         return `
         <div class="bg-white rounded-xl shadow-sm overflow-hidden card-hover cursor-pointer" onclick="goToProduct(${product.id})">
             <div class="aspect-square bg-gray-100 relative">
-                <img data-src="${images[0]}" alt="${product.name}" class="w-full h-full object-cover lazy-image opacity-0 transition-opacity duration-500" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot; viewBox=&quot;0 0 200 200&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;200&quot; height=&quot;200&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;14&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品图片%3C/text%3E%3C/svg%3E'; this.classList.remove('opacity-0');">
-                <div class="absolute inset-0 flex items-center justify-center pointer-events-none loading-spinner">
-                    <i class="fa-solid fa-circle-notch fa-spin text-gray-300"></i>
-                </div>
+                <img src="${images[0]}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;200&quot; height=&quot;200&quot; viewBox=&quot;0 0 200 200&quot;%3E%3Crect fill=&quot;%23f3f4f6&quot; width=&quot;200&quot; height=&quot;200&quot;/%3E%3Ctext fill=&quot;%239ca3af&quot; font-family=&quot;sans-serif&quot; font-size=&quot;14&quot; x=&quot;50%25&quot; y=&quot;50%25&quot; text-anchor=&quot;middle&quot; dominant-baseline=&quot;middle&quot;%3E商品图片%3C/text%3E%3C/svg%3E'">
                 <div class="absolute top-2 left-2 bg-red-500 text-white text-xs px-2 py-1 rounded">
                     批发价
                 </div>
@@ -66,42 +63,6 @@ function renderProducts() {
             </div>
         </div>
     `}).join('');
-    initLazyLoad();
-}
-
-function initLazyLoad() {
-    const lazyImages = document.querySelectorAll('.lazy-image');
-    
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src;
-                    img.onload = function() {
-                        img.classList.remove('opacity-0');
-                        const spinner = img.parentElement.querySelector('.loading-spinner');
-                        if (spinner) spinner.remove();
-                    };
-                    observer.unobserve(img);
-                }
-            });
-        }, {
-            rootMargin: '100px',
-            threshold: 0.1
-        });
-        
-        lazyImages.forEach(img => observer.observe(img));
-    } else {
-        lazyImages.forEach(img => {
-            img.src = img.dataset.src;
-            img.onload = function() {
-                img.classList.remove('opacity-0');
-                const spinner = img.parentElement.querySelector('.loading-spinner');
-                if (spinner) spinner.remove();
-            };
-        });
-    }
 }
 
 function goToProduct(id) {
