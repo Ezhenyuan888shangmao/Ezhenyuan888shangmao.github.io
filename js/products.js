@@ -181,7 +181,7 @@ function addToCart(productId, quantity) {
             price: product.price,
             unit: product.unit,
             minOrder: product.minOrder,
-            image: product.image,
+            image: product.images ? product.images[0] : product.image,
             quantity: quantity
         });
     }
