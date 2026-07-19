@@ -497,6 +497,31 @@ var products = [
                 "value": ""
             }
         ]
+    },
+    {
+        "id": 1784458573828,
+        "name": "仲盛三宝酒",
+        "category": "alcohol",
+        "price": 80,
+        "originalPrice": 100,
+        "unit": "箱",
+        "minOrder": 4,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784458492464.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格：125ml*20",
+                "value": ""
+            },
+            {
+                "name": "保质期：5年",
+                "value": ""
+            }
+        ]
     }
 ];
 
