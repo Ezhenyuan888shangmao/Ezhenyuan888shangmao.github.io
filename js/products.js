@@ -1,24 +1,5 @@
 var products = [
     {
-        "id": 1784346702858,
-        "name": "欧美风1*6",
-        "category": "gift",
-        "price": 65,
-        "originalPrice": 70,
-        "unit": "箱",
-        "minOrder": 10,
-        "sales": 0,
-        "stock": 100,
-        "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784346638802.jpg",
-        "description": "",
-        "specifications": [
-            {
-                "name": "规格",
-                "value": "-"
-            }
-        ]
-    },
-    {
         "id": 1784350805162,
         "name": "八面通",
         "category": "gift",
@@ -67,27 +48,6 @@ var products = [
         "sales": 0,
         "stock": 100,
         "image": "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784351523549.jpg",
-        "description": "",
-        "specifications": [
-            {
-                "name": "规格",
-                "value": "-"
-            }
-        ]
-    },
-    {
-        "id": 1784426291885,
-        "name": "52度牛薯地瓜烧",
-        "category": "alcohol",
-        "price": 240,
-        "originalPrice": 300,
-        "unit": "箱",
-        "minOrder": 2,
-        "sales": 0,
-        "stock": 100,
-        "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784426243153.jpg"
-        ],
         "description": "",
         "specifications": [
             {
@@ -150,6 +110,27 @@ var products = [
         "stock": 100,
         "images": [
             "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784346296589.jpg"
+        ],
+        "description": "",
+        "specifications": [
+            {
+                "name": "规格",
+                "value": "-"
+            }
+        ]
+    },
+    {
+        "id": 1784426590862,
+        "name": "欧美风1*6",
+        "category": "gift",
+        "price": 65,
+        "originalPrice": 70,
+        "unit": "箱",
+        "minOrder": 10,
+        "sales": 0,
+        "stock": 100,
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784346638802.jpg"
         ],
         "description": "",
         "specifications": [
