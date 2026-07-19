@@ -275,9 +275,21 @@
                     localStorage.setItem('product_version', data.version);
                     const prodResponse = await fetch('https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/js/products.js', {cache: 'no-store'});
                     const prodText = await prodResponse.text();
-                    const match = prodText.match(/var products = (\[.*?\]);/s);
-                    if (match) {
-                        window.products = JSON.parse(match[1]);
+                    const startIndex = prodText.indexOf('var products = [');
+                    if (startIndex !== -1) {
+                        const jsonStart = startIndex + 'var products = '.length;
+                        let depth = 0;
+                        let jsonEnd = jsonStart;
+                        for (let i = jsonStart; i < prodText.length; i++) {
+                            if (prodText[i] === '[') depth++;
+                            if (prodText[i] === ']') depth--;
+                            if (depth === 0) {
+                                jsonEnd = i + 1;
+                                break;
+                            }
+                        }
+                        const jsonStr = prodText.substring(jsonStart, jsonEnd);
+                        window.products = JSON.parse(jsonStr);
                         if (typeof renderProducts === 'function') {
                             renderProducts();
                         }
