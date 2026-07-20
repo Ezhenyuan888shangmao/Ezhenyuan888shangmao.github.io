@@ -177,9 +177,9 @@ var products = [
         "sales": 0,
         "stock": 100,
         "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454509945.jpg",
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454520480.jpg",
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454532318.jpg"
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784454532318.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784531589310.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784531598151.jpg"
         ],
         "description": "",
         "specifications": [
@@ -349,8 +349,8 @@ var products = [
         "sales": 0,
         "stock": 100,
         "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455584065.jpg",
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455594189.jpg"
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455594189.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784531354772.jpg"
         ],
         "description": "",
         "specifications": [
@@ -371,9 +371,9 @@ var products = [
         "sales": 0,
         "stock": 100,
         "images": [
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455902397.jpg",
             "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455909697.jpg",
-            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455916583.jpg"
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784455916583.jpg",
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784531451584.jpg"
         ],
         "description": "",
         "specifications": [
