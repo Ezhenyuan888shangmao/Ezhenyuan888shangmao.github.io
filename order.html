@@ -142,10 +142,13 @@
                 <p class="text-sm text-gray-600 mb-1">应付金额</p>
                 <p id="payment-total" class="text-3xl font-bold text-primary">¥0.00</p>
             </div>
-            <button onclick="closePaymentModal()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
-                付款完成，返回首页
+            <button onclick="confirmPayment()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                我已付款，确认订单
             </button>
-            <p class="text-xs text-gray-500 mt-4">付款后请等待客服确认订单</p>
+            <button onclick="cancelPayment()" class="w-full mt-3 bg-gray-100 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-opacity">
+                暂不付款，取消订单
+            </button>
+            <p class="text-xs text-gray-500 mt-4">付款后请点击确认，未付款关闭则订单取消</p>
         </div>
     </div>
 
@@ -256,6 +259,8 @@
             }
         }
 
+        let currentOrder = null;
+
         async function submitOrder() {
             const form = document.getElementById('order-form');
             if (!form.checkValidity()) {
@@ -274,7 +279,7 @@
                 return;
             }
 
-            const order = {
+            currentOrder = {
                 name,
                 phone,
                 address,
@@ -288,16 +293,29 @@
             submitBtn.disabled = true;
             submitBtn.textContent = '提交中...';
 
+            showPaymentCode(currentOrder.total.toFixed(2));
+            
+            submitBtn.disabled = false;
+            submitBtn.textContent = '提交订单';
+        }
+
+        async function confirmPayment() {
+            if (!currentOrder) return;
+
+            const confirmBtn = document.querySelector('#payment-modal button:first-child');
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = '确认中...';
+
             try {
                 const sendKey = 'SCT380247TUhEeBPRnXGF7wRXEpUH1Z5QL';
                 const serverChanUrl = `https://sctapi.ftqq.com/${sendKey}.send`;
                 
                 let itemsText = '';
-                cart.forEach(item => {
+                currentOrder.items.forEach(item => {
                     itemsText += `- ${item.name}: ${item.quantity}${item.unit} x ¥${item.price} = ¥${(item.price * item.quantity).toFixed(2)}\n`;
                 });
 
-                const desp = `**收货人：**${name}\n**手机号：**${phone}\n**地址：**${address}\n**备注：**${remark || '无'}\n\n**商品清单：**\n${itemsText}\n**订单总额：**¥${order.total.toFixed(2)}\n**下单时间：**${order.time}`;
+                const desp = `**收货人：**${currentOrder.name}\n**手机号：**${currentOrder.phone}\n**地址：**${currentOrder.address}\n**备注：**${currentOrder.remark || '无'}\n\n**商品清单：**\n${itemsText}\n**订单总额：**¥${currentOrder.total.toFixed(2)}\n**下单时间：**${currentOrder.time}`;
 
                 const url = `${serverChanUrl}?title=【河南益臻源】新订单通知&desp=${encodeURIComponent(desp)}`;
 
@@ -306,21 +324,24 @@
                 });
 
                 clearCart();
-                showPaymentCode(order.total.toFixed(2));
+                alert('订单已确认！客服会尽快联系您。');
+                window.location.href = 'index.html';
             } catch (error) {
                 clearCart();
-                showPaymentCode(order.total.toFixed(2));
+                alert('订单已确认！客服会尽快联系您。');
+                window.location.href = 'index.html';
             }
+        }
+
+        function cancelPayment() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            currentOrder = null;
+            alert('订单已取消，商品仍在购物车中');
         }
 
         function showPaymentCode(total) {
             document.getElementById('payment-total').textContent = '¥' + total;
             document.getElementById('payment-modal').classList.remove('hidden');
-        }
-
-        function closePaymentModal() {
-            document.getElementById('payment-modal').classList.add('hidden');
-            window.location.href = 'index.html';
         }
 
         document.addEventListener('DOMContentLoaded', () => {
