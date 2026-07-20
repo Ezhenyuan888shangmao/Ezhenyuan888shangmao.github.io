@@ -3,8 +3,8 @@ var products = [
         "id": 1784350805162,
         "name": "八面通",
         "category": "gift",
-        "price": 65,
-        "originalPrice": 70,
+        "price": 80,
+        "originalPrice": 88,
         "unit": "提",
         "minOrder": 10,
         "sales": 0,
@@ -16,6 +16,9 @@ var products = [
                 "name": "规格",
                 "value": "-"
             }
+        ],
+        "images": [
+            "https://raw.githubusercontent.com/Ezhenyuan888shangmao/Ezhenyuan888shangmao.github.io/main/images/1784350799963.jpg"
         ]
     },
     {
@@ -83,8 +86,8 @@ var products = [
         "id": 1784426590862,
         "name": "欧美风1*6",
         "category": "gift",
-        "price": 65,
-        "originalPrice": 70,
+        "price": 80,
+        "originalPrice": 88,
         "unit": "箱",
         "minOrder": 10,
         "sales": 0,
@@ -104,8 +107,8 @@ var products = [
         "id": 1784454178691,
         "name": "盲盒",
         "category": "gift",
-        "price": 55,
-        "originalPrice": 60,
+        "price": 60,
+        "originalPrice": 68,
         "unit": "箱",
         "minOrder": 10,
         "sales": 0,
