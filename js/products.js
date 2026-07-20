@@ -191,7 +191,7 @@ var products = [
     },
     {
         "id": 1784454742456,
-        "name": "仲盛三鞭酒",
+        "name": "仲圣三鞭酒",
         "category": "alcohol",
         "price": 195,
         "originalPrice": 225,
@@ -213,7 +213,7 @@ var products = [
     },
     {
         "id": 1784454904918,
-        "name": "43度500ml蓝屏红星二锅头",
+        "name": "43度500ml蓝瓶红星二锅头",
         "category": "alcohol",
         "price": 456,
         "originalPrice": 480,
@@ -318,7 +318,7 @@ var products = [
     },
     {
         "id": 1784455542587,
-        "name": "仙坛30",
+        "name": "仙潭30",
         "category": "alcohol",
         "price": 480,
         "originalPrice": 600,
@@ -340,7 +340,7 @@ var products = [
     },
     {
         "id": 1784455607027,
-        "name": "白坛大匠为",
+        "name": "白潭大匠为",
         "category": "alcohol",
         "price": 600,
         "originalPrice": 1080,
@@ -478,7 +478,7 @@ var products = [
     },
     {
         "id": 1784456215402,
-        "name": "仲盛养生酒",
+        "name": "仲圣养生酒",
         "category": "alcohol",
         "price": 192,
         "originalPrice": 240,
@@ -503,7 +503,7 @@ var products = [
     },
     {
         "id": 1784458573828,
-        "name": "仲盛三宝酒",
+        "name": "仲圣三宝酒",
         "category": "alcohol",
         "price": 80,
         "originalPrice": 100,
