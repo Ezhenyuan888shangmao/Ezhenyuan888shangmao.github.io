@@ -317,7 +317,7 @@
 
                 const desp = `**收货人：**${currentOrder.name}\n**手机号：**${currentOrder.phone}\n**地址：**${currentOrder.address}\n**备注：**${currentOrder.remark || '无'}\n\n**商品清单：**\n${itemsText}\n**订单总额：**¥${currentOrder.total.toFixed(2)}\n**下单时间：**${currentOrder.time}`;
 
-                const url = `${serverChanUrl}?title=【河南益臻源】新订单通知&desp=${encodeURIComponent(desp)}`;
+                const url = `${serverChanUrl}?title=【益臻源商城】新订单通知&desp=${encodeURIComponent(desp)}`;
 
                 await fetch(url, {
                     method: 'GET'
