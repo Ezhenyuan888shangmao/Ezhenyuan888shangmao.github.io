@@ -142,7 +142,7 @@
                 <p class="text-sm text-gray-600 mb-1">应付金额</p>
                 <p id="payment-total" class="text-3xl font-bold text-primary">¥0.00</p>
             </div>
-            <button onclick="confirmPayment()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
+            <button id="confirm-payment-btn" onclick="confirmPayment()" class="w-full bg-primary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity">
                 我已付款，确认订单
             </button>
             <button onclick="cancelPayment()" class="w-full mt-3 bg-gray-100 text-gray-600 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-opacity">
@@ -302,7 +302,7 @@
         async function confirmPayment() {
             if (!currentOrder) return;
 
-            const confirmBtn = document.querySelector('#payment-modal button:first-child');
+            const confirmBtn = document.getElementById('confirm-payment-btn');
             confirmBtn.disabled = true;
             confirmBtn.textContent = '确认中...';
 
