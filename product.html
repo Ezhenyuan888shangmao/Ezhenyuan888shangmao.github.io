@@ -79,18 +79,8 @@
     </nav>
 
     <section id="product-detail" class="py-8 bg-white relative">
-        <div class="hidden lg:block absolute left-4 top-16 bottom-16 flex flex-col justify-around">
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-        </div>
-        <div class="hidden lg:block absolute right-4 top-16 bottom-16 flex flex-col justify-around">
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-            <div class="bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>
-        </div>
+        <div id="warning-left" class="hidden lg:block absolute left-4 top-0"></div>
+        <div id="warning-right" class="hidden lg:block absolute right-4 top-0"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="relative aspect-square bg-gray-100 rounded-xl overflow-hidden">
@@ -410,7 +400,31 @@
                 window.location.href = 'index.html';
             }
             updateCartCount();
+            setTimeout(renderAgeWarning, 100);
         });
+
+        function renderAgeWarning() {
+            const leftContainer = document.getElementById('warning-left');
+            const rightContainer = document.getElementById('warning-right');
+            
+            if (!leftContainer || !rightContainer) return;
+            
+            const sectionHeight = document.getElementById('product-detail').offsetHeight || 1500;
+            const spacing = 315; // 8厘米约等于315像素
+            const count = Math.ceil(sectionHeight / spacing);
+            
+            let leftHtml = '';
+            let rightHtml = '';
+            
+            for (let i = 0; i < count; i++) {
+                const topPosition = i * spacing;
+                leftHtml += `<div class="absolute top-${topPosition} bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>`;
+                rightHtml += `<div class="absolute top-${topPosition} bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>`;
+            }
+            
+            leftContainer.innerHTML = leftHtml;
+            rightContainer.innerHTML = rightHtml;
+        }
     </script>
     <script>
         (async function checkVersion() {
