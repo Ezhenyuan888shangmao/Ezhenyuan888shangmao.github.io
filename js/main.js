@@ -134,7 +134,31 @@ function updateCartCount() {
     }
 }
 
+function renderAgeWarning() {
+    const leftContainer = document.getElementById('warning-left');
+    const rightContainer = document.getElementById('warning-right');
+    
+    if (!leftContainer || !rightContainer) return;
+    
+    const sectionHeight = document.getElementById('products').offsetHeight || 2000;
+    const spacing = 315; // 8厘米约等于315像素
+    const count = Math.ceil(sectionHeight / spacing);
+    
+    let leftHtml = '';
+    let rightHtml = '';
+    
+    for (let i = 0; i < count; i++) {
+        const topPosition = i * spacing;
+        leftHtml += `<div class="absolute top-${topPosition} bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-r-lg transform -rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>`;
+        rightHtml += `<div class="absolute top-${topPosition} bg-red-600 text-white text-sm font-bold py-2 px-1 rounded-l-lg transform rotate-90 origin-center whitespace-nowrap">禁止未成年人购酒</div>`;
+    }
+    
+    leftContainer.innerHTML = leftHtml;
+    rightContainer.innerHTML = rightHtml;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     renderProducts();
     updateCartCount();
+    setTimeout(renderAgeWarning, 100);
 });
